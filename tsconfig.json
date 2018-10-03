@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "module": "commonjs",
+    "target": "es3",
+    "allowJs": true,
+    "alwaysStrict": true,
+    "removeComments": true,
+    "lib": [
+      "es6",
+      "dom"
+    ]
+  }
+}

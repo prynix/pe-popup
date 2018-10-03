@@ -1,0 +1,22 @@
+{
+  "name": "pointer-events-frontend",
+  "version": "1.0.0",
+  "description": "pointer-events-frontend",
+  "scripts": {
+    "start": "webpack --watch"
+  },
+  "dependencies": {
+    "css-loader": "0.28.11",
+    "node-sass": "4.9.3",
+    "sass-loader": "7.0.1",
+    "style-loader": "0.21.0",
+    "ts-loader": "4.2.0",
+    "typescript": "3.0.3",
+    "webpack": "4.6.0"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack-cli": "^3.1.0"
+  }
+}
