@@ -1,7 +1,6 @@
 export default class Storage {
 
   private static readonly KEY = '__SPECIAL_ONE_SESSION_COUNTER__';
-  private static readonly DEEP = 2;
   private counter: number;
 
 
@@ -18,7 +17,7 @@ export default class Storage {
 
 
   public canShowPopup(): boolean {
-    return this.counter >= Storage.DEEP;
+    return this.counter >= Storage.deep(1, 3);
   }
 
   public incrementShowCounter(): void {
@@ -33,5 +32,10 @@ export default class Storage {
 
   public clear(): void {
     window.localStorage.clear();
+  }
+
+
+  private static deep(min: number, max: number): number {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 }

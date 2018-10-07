@@ -3,6 +3,7 @@ export default class Popup {
   private readonly template: HTMLElement;
   private readonly adsenseBlockContainer: HTMLDivElement;
   private popup: HTMLDivElement;
+  private overlay: HTMLDivElement;
 
 
   public constructor(template: HTMLElement, adsenseBlockContainer: HTMLDivElement) {
@@ -12,6 +13,8 @@ export default class Popup {
 
 
   public create(): Popup {
+    this.overlay = document.createElement('div');
+    this.overlay.classList.add('pe__popup__overlay');
     this.popup = document.createElement('div');
     this.popup.classList.add('pe__popup');
     this.popup.innerHTML = this.template.innerHTML;
@@ -26,16 +29,14 @@ export default class Popup {
   }
 
   public inject(): void {
-    setTimeout((): void => {
-      const overlay = document.createElement('div');
-      overlay.classList.add('pe__popup__overlay');
-      document.body.appendChild(overlay);
-      document.body.appendChild(this.popup);
-    }, 1000 * Popup.getRandomInteger(10, 15));
+    document.body.appendChild(this.overlay);
+    document.body.appendChild(this.popup);
+    window.onblur = this.hide;
   }
 
 
-  private static getRandomInteger(min: number, max: number): number {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+  private hide = (): void => {
+    this.overlay.remove();
+    this.popup.remove();
   }
 }
