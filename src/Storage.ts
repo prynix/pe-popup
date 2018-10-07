@@ -17,7 +17,7 @@ export default class Storage {
 
 
   public canShowPopup(): boolean {
-    return this.counter === Storage.deep(1, 2);
+    return this.counter >= Storage.deep(1, 2);
   }
 
   public incrementShowCounter(): void {

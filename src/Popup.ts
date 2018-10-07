@@ -31,7 +31,7 @@ export default class Popup {
   public inject(): void {
     document.body.appendChild(this.overlay);
     document.body.appendChild(this.popup);
-    window.onblur = this.hide;
+    // window.onblur = this.hide;
   }
 
 
