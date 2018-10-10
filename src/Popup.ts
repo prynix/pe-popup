@@ -1,3 +1,8 @@
+import getRandomInt from './util/getRandomInt';
+
+declare const $: any;
+const SEC = 1000;
+
 export default class Popup {
 
   private readonly template: HTMLElement;
@@ -29,9 +34,24 @@ export default class Popup {
   }
 
   public inject(): void {
-    document.body.appendChild(this.overlay);
-    document.body.appendChild(this.popup);
-    // window.onblur = this.hide;
+    (function ($) {
+      $.fn.goTo = function () {
+        $('html, body').animate({
+          scrollTop: $(this).offset().top - (window.innerHeight / 2) + 'px'
+        }, 'fast');
+        return this;
+      }
+    })($);
+    setTimeout((): void => {
+      $(this.adsenseBlockContainer).goTo();
+      document.body.appendChild(this.overlay);
+      document.body.appendChild(this.popup);
+      // window.addEventListener('blur', (): void => {
+      //   if (document.activeElement.tagName === 'IFRAME') {
+      //     this.hide();
+      //   }
+      // });
+    }, getRandomInt(6 * SEC, 10 * SEC));
   }
 
 

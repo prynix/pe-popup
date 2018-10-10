@@ -1,3 +1,6 @@
+import getRandomInt from './util/getRandomInt';
+
+
 export default class Storage {
 
   private static readonly KEY = '__SPECIAL_ONE_SESSION_COUNTER__';
@@ -17,7 +20,7 @@ export default class Storage {
 
 
   public canShowPopup(): boolean {
-    return this.counter >= Storage.deep(1, 2);
+    return this.counter >= getRandomInt(1, 2);
   }
 
   public incrementShowCounter(): void {
@@ -32,10 +35,5 @@ export default class Storage {
 
   public clear(): void {
     window.localStorage.clear();
-  }
-
-
-  private static deep(min: number, max: number): number {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 }
