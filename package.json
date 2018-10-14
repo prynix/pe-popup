@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "pointer-events-frontend",
   "scripts": {
-    "start": "webpack --watch"
+    "start": "webpack --watch",
+    "build": "webpack"
   },
   "dependencies": {
     "css-loader": "0.28.11",

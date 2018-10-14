@@ -43,14 +43,11 @@ export default class Popup {
       }
     })($);
     setTimeout((): void => {
+      const blurCallback = this.hide;
       $(this.adsenseBlockContainer).goTo();
       document.body.appendChild(this.overlay);
       document.body.appendChild(this.popup);
-      // window.addEventListener('blur', (): void => {
-      //   if (document.activeElement.tagName === 'IFRAME') {
-      //     this.hide();
-      //   }
-      // });
+      $(this.adsenseBlockContainer).find('iframe').iframeTracker({ blurCallback });
     }, getRandomInt(6 * SEC, 10 * SEC));
   }
 
