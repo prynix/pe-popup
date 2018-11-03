@@ -27,9 +27,13 @@ export default class Popup {
   }
 
   public compute(): Popup {
-    const { offsetTop, offsetLeft } = this.adsenseBlockContainer;
-    this.popup.style.top = `${offsetTop - 80}px`;
-    this.popup.style.left = `${offsetLeft + 200}px`;
+    const
+      { offsetTop, offsetLeft, offsetHeight } = this.adsenseBlockContainer,
+      isMobileDevice = this.isMobileDevice(),
+      leftOffset = isMobileDevice ? 0 : 200,
+      topOffset = isMobileDevice ? (offsetHeight / 2) - 75 : 80;
+    this.popup.style.top = `${offsetTop - topOffset}px`;
+    this.popup.style.left = `${offsetLeft + leftOffset}px`;
     return this;
   }
 
@@ -55,5 +59,9 @@ export default class Popup {
   private hide = (): void => {
     this.overlay.remove();
     this.popup.remove();
+  }
+
+  private isMobileDevice(): boolean {
+    return window.outerWidth < 767;
   }
 }
